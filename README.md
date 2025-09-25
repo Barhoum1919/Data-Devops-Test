@@ -52,7 +52,7 @@ Ce projet s'inscrit dans le cadre d'un test technique pour un poste de Data Engi
 ### Extraction (E)
 **Source :** API OpenData Vélib - Ville de Paris
 - **Endpoint :** https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/velib-disponibilite-en-temps-reel/records
-- **Fréquence :** Toutes les 2 minutes
+- **Fréquence :** Toutes les 5 minutes
 - **Format :** JSON avec pagination
 - **Données extraites :**
   - Informations stations (nom, capacité, localisation)
@@ -78,19 +78,3 @@ Ce projet s'inscrit dans le cadre d'un test technique pour un poste de Data Engi
 - **Indexation :** Sur `station_id` et `timestamp` pour performances
 - **Historisation :** Conservation des données pour analyse temporelle
 
-## 🚀 Déploiement et exploitation
-
-### Structure du projet
-
-project/
-├── docker-compose.yml          # Orchestration des services
-├── docker/                     # Dossier de Dockerfiles
-├── requirements.txt            # Dépendances Python
-├── ingestion/ 
-│   └── velib_ingestor.py             # Scripts d'ingestion
-│   
-│── dashboard/             
-│   │   └── app.py             Application Streamlit UI
-├── db/
-│   └── data/                  # staockage dans la Base de données 
-      
