@@ -143,20 +143,6 @@ Ce projet s'inscrit dans le cadre d'un test technique pour un poste de Data Engi
 - **Planification capacité** : Besoins d'expansion/réduction
 - **Qualité de service** : Taux de satisfaction potentiel
 
-## 🎨 Principes de Design Appliqués
-
-### **Hiérarchie Visuelle**
-1. **Données temps réel** → Action immédiate
-2. **Cartographie** → Contexte spatial
-3. **Analyses avancées** → Insights stratégiques
-4. **Données détaillées** → Profondeur d'analyse
-5. **Historique** → Perspective temporelle
-
-### **Interactivité Stratégique**
-- **Filtres arrondissement** : Granularité territoriale
-- **Actualisation manuelle** : Contrôle utilisateur
-- **Tooltips informatifs** : Contextualisation des données
-- **Recherche texte** : Accès direct personnalisé
 
 ## 📊 Métriques Clés et Leur Signification
 
@@ -175,40 +161,6 @@ Ce projet s'inscrit dans le cadre d'un test technique pour un poste de Data Engi
 - `Points chauds/froids` → Optimisation des ressources
 - `Densité par arrondissement` → Planification urbaine
 
-## 🎯 Alignement avec les Objectifs Métier
 
-### **Pour l'Exploitant Vélib**
-- **Réduction des coûts** : Optimisation des tournées
-- **Amélioration service** : Réduction des pénures
-- **Décision d'investissement** : Données pour le long terme
 
-### **Pour la Ville de Paris**
-- **Politique mobilité** : Données pour la planification
-- **Impact environnemental** : Mesure de la transition écologique
-- **Service public** : Transparence et redevabilité
 
-### **Pour les Usagers**
-- **Expérience utilisateur** : Information en temps réel
-- **Planification trajets** : Prédictibilité du service
-- **Confiance dans le système** : Données ouvertes et vérifiables
-
-## 🔮 Validation des Choix de Visualisation
-
-### **Tests Utilisateurs Impliqués**
-- **Gestionnaires** : "Les KPI permettent une surveillance efficace"
-- **Usagers** : "La carte aide à trouver un vélo rapidement"
-- **Analystes** : "L'historique permet de comprendre les patterns"
-
-### **Benchmark Sectoriel**
-- **Comparaison avec** : systèmes de vélos en libre-service mondiaux
-- **Best practices** : applications transport (RATP, Citymapper)
-- **Standards industry** : dashboards de mobilité urbaine
-
-### **Évolutivité Démontrée**
-- **Modulaire** : Ajout facile de nouvelles visualisations
-- **Scalable** : Support de volumes croissants de données
-- **Adaptable** : Personnalisation par utilisateur
-
----
-
-**✅ Conclusion :** Chaque visualisation a été sélectionnée pour répondre à un besoin métier spécifique et s'inscrit dans une logique cohérente allant du monitoring opérationnel à l'analyse stratégique, en passant par l'aide à la décision territoriale.
