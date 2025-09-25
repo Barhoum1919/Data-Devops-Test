@@ -77,9 +77,6 @@ Ce projet s'inscrit dans le cadre d'un test technique pour un poste de Data Engi
 - **Schéma optimisé :** Tables `stations` et `availability`
 - **Indexation :** Sur `station_id` et `timestamp` pour performances
 - **Historisation :** Conservation des données pour analyse temporelle
-# 🚴 Dashboard Vélib - Paris - Justification des Visualisations
-
-## 📊 Stratégie de Visualisation des Données
 
 ## 🔍 Justification Détaillée des Visualisations
 
