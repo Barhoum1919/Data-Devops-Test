@@ -47,6 +47,26 @@ Ce projet s'inscrit dans le cadre d'un test technique pour un poste de Data Engi
 - **Docker Compose** : Orchestration multi-conteneurs
 - **Git** : Versioning du code
 
+## 🚀 Guide d'Installation Rapide
+
+### Prérequis Système
+- **Python 3.9+** : [Télécharger Python](https://www.python.org/downloads/)
+- **Docker** : [Installer Docker](https://docs.docker.com/get-docker/)
+- **Docker Compose** : [Installer Docker Compose](https://docs.docker.com/compose/install/)
+- **Git** : [Installer Git](https://git-scm.com/downloads)
+
+---
+
+## 📥 Méthode 1 : Installation avec Docker (Recommandée)
+
+### 1. Clonage du Repository
+git clone https://github.com/Barhoum1919/Data-Devops-Test.git
+cd Data-Devops-Test
+### 2. Lancer L'application Containerisé
+# Construction et lancement des conteneurs
+docker-compose up --build
+
+
 ## 📈 Processus ETL
 
 ### Extraction (E)
