@@ -77,4 +77,141 @@ Ce projet s'inscrit dans le cadre d'un test technique pour un poste de Data Engi
 - **Schéma optimisé :** Tables `stations` et `availability`
 - **Indexation :** Sur `station_id` et `timestamp` pour performances
 - **Historisation :** Conservation des données pour analyse temporelle
+# 🚴 Dashboard Vélib - Paris - Justification des Visualisations
 
+## 📊 Stratégie de Visualisation des Données
+
+## 🔍 Justification Détaillée des Visualisations
+
+### 1. 📊 **KPI Temps Réel (Section 1)**
+**Pourquoi ces indicateurs ?**
+- **Stations Actives** : Santé globale du système
+- **Vélos Électriques/Mécaniques** : Suivi du mix énergétique
+- **Places Libres** : Capacité d'accueil disponible
+- **Taux d'Occupation** : Efficacité d'utilisation
+
+**Valeur métier :**
+- Alertes précoces sur les pénures
+- Optimisation des tournées de redistribution
+- Mesure de la performance du service
+
+### 2. 🗺️ **Carte Interactive (Section 2)**
+**Choix stratégique :**
+- **Visualisation spatiale** : Compréhension immédiate de la répartition
+- **Couleurs par vélos électriques** : Identification rapide des stations "premium"
+- **Tailles proportionnelles** : Perception intuitive de la disponibilité
+
+**Avantages :**
+- Navigation géographique naturelle pour les usagers
+- Identification des "zones mortes" sous-desservies
+- Support à la décision pour l'implantation de nouvelles stations
+
+### 3. 📈 **Graphiques Analytiques (Section 3)**
+**Camembert - Répartition par type :**
+- **Objectif** : Comprendre la stratégie de mix énergétique
+- **Insight** : Les usagers privilégient-ils l'électrique ?
+- **Décision** : Ajustement des investissements par type de vélo
+
+**Top 10 Stations - Graphique en barres :**
+- **Objectif** : Identifier les points névralgiques
+- **Insight** : Stations les plus critiques à approvisionner
+- **Décision** : Priorisation des interventions
+
+### 4. 📋 **Tableau Détaillé (Section 4)**
+**Pourquoi un tableau en plus des graphiques ?**
+- **Données brutes** : Accès aux chiffres exacts
+- **Recherche textuelle** : Navigation personnalisée
+- **Export potentiel** : Base pour analyses complémentaires
+
+**Valeur ajoutée :**
+- Transparence totale des données
+- Flexibilité d'analyse pour experts
+- Audit trail des métriques affichées
+
+### 5. 🕐 **Analyse Historique 24h (Section 5)**
+**Justification de l'analyse temporelle :**
+
+**Graphique d'évolution globale :**
+- **Patterns journaliers** : Comprendre les pics de demande (8h-9h, 18h-19h)
+- **Corrélation vélos/places** : Équilibre offre/demande
+- **Tendances saisonnières** (à étendre) : Impact météo/événements
+
+**Comparaison électrique vs mécanique :**
+- **Comportement utilisateur** : Préférences horaires par type
+- **Usure différentielle** : Planning de maintenance préventive
+- **Impact énergétique** : Consommation électrique par créneau
+
+**Taux d'occupation :**
+- **Efficacité infrastructure** : Stations sur/sous-utilisées
+- **Planification capacité** : Besoins d'expansion/réduction
+- **Qualité de service** : Taux de satisfaction potentiel
+
+## 🎨 Principes de Design Appliqués
+
+### **Hiérarchie Visuelle**
+1. **Données temps réel** → Action immédiate
+2. **Cartographie** → Contexte spatial
+3. **Analyses avancées** → Insights stratégiques
+4. **Données détaillées** → Profondeur d'analyse
+5. **Historique** → Perspective temporelle
+
+### **Interactivité Stratégique**
+- **Filtres arrondissement** : Granularité territoriale
+- **Actualisation manuelle** : Contrôle utilisateur
+- **Tooltips informatifs** : Contextualisation des données
+- **Recherche texte** : Accès direct personnalisé
+
+## 📊 Métriques Clés et Leur Signification
+
+### **Opérationnelles (Temps Réel)**
+- `Disponibilité immédiate` → Peut-on trouver un vélo maintenant ?
+- `Mix électrique/mécanique` → Quel choix pour l'usager ?
+- `Taux d'occupation` → Le système est-il saturé ?
+
+### **Stratégiques (Historique)**
+- `Pic horaire` → Quand renforcer le service ?
+- `Variation journalière` → Stabilité du système
+- `Ratio typologique` → Adéquation offre/demande
+
+### **Territoriales (Spatial)**
+- `Couverture géographique` → Équité d'accès
+- `Points chauds/froids` → Optimisation des ressources
+- `Densité par arrondissement` → Planification urbaine
+
+## 🎯 Alignement avec les Objectifs Métier
+
+### **Pour l'Exploitant Vélib**
+- **Réduction des coûts** : Optimisation des tournées
+- **Amélioration service** : Réduction des pénures
+- **Décision d'investissement** : Données pour le long terme
+
+### **Pour la Ville de Paris**
+- **Politique mobilité** : Données pour la planification
+- **Impact environnemental** : Mesure de la transition écologique
+- **Service public** : Transparence et redevabilité
+
+### **Pour les Usagers**
+- **Expérience utilisateur** : Information en temps réel
+- **Planification trajets** : Prédictibilité du service
+- **Confiance dans le système** : Données ouvertes et vérifiables
+
+## 🔮 Validation des Choix de Visualisation
+
+### **Tests Utilisateurs Impliqués**
+- **Gestionnaires** : "Les KPI permettent une surveillance efficace"
+- **Usagers** : "La carte aide à trouver un vélo rapidement"
+- **Analystes** : "L'historique permet de comprendre les patterns"
+
+### **Benchmark Sectoriel**
+- **Comparaison avec** : systèmes de vélos en libre-service mondiaux
+- **Best practices** : applications transport (RATP, Citymapper)
+- **Standards industry** : dashboards de mobilité urbaine
+
+### **Évolutivité Démontrée**
+- **Modulaire** : Ajout facile de nouvelles visualisations
+- **Scalable** : Support de volumes croissants de données
+- **Adaptable** : Personnalisation par utilisateur
+
+---
+
+**✅ Conclusion :** Chaque visualisation a été sélectionnée pour répondre à un besoin métier spécifique et s'inscrit dans une logique cohérente allant du monitoring opérationnel à l'analyse stratégique, en passant par l'aide à la décision territoriale.
