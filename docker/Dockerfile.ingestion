@@ -1,0 +1,18 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copier requirements ingestion
+COPY data_ingestion/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copier tout le dossier data_ingestion et db
+COPY data_ingestion/ ./data_ingestion/
+COPY db/ ./db/
+
+# Lancer l’ingestion
+CMD ["python", "-m", "data_ingestion.fetch_velib"]

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Vélib - Paris</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .chart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .stations-table {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f8f9fa;
+        }
+        .last-update {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚴 Dashboard Vélib - Paris</h1>
+            <p>Données en temps réel des stations Vélib</p>
+        </div>
+
+        <div class="stats-grid" id="statsGrid">
+            <!-- Les statistiques seront chargées ici -->
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-container">
+                <div id="bikeDistributionChart"></div>
+            </div>
+            <div class="chart-container">
+                <div id="stationsByArrondissementChart"></div>
+            </div>
+            <div class="chart-container">
+                <div id="availabilityByArrondissementChart"></div>
+            </div>
+        </div>
+
+        <div class="stations-table">
+            <h3>Stations Vélib</h3>
+            <div style="margin-bottom: 15px;">
+                <input type="text" id="searchInput" placeholder="Rechercher une station..." style="padding: 8px; width: 300px;">
+                <select id="arrondissementFilter" style="padding: 8px; margin-left: 10px;">
+                    <option value="">Tous les arrondissements</option>
+                </select>
+            </div>
+            <table id="stationsTable">
+                <thead>
+                    <tr>
+                        <th>Station</th>
+                        <th>Arrondissement</th>
+                        <th>Vélos électriques</th>
+                        <th>Vélos mécaniques</th>
+                        <th>Places disponibles</th>
+                        <th>Dernière mise à jour</th>
+                    </tr>
+                </thead>
+                <tbody id="stationsTableBody">
+                    <!-- Les données des stations seront chargées ici -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="last-update" id="lastUpdate">
+            Dernière mise à jour: <span id="updateTime">-</span>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour formater les dates
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleString('fr-FR');
+        }
+
+        // Fonction pour charger les statistiques
+        async function loadStats() {
+            try {
+                const response = await fetch('/api/stats');
+                const data = await response.json();
+                
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+
+                const stats = data.global_stats;
+                document.getElementById('statsGrid').innerHTML = `
+                    <div class="stat-card">
+                        <div class="stat-label">Stations actives</div>
+                        <div class="stat-value">${stats.total_stations || 0}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Vélos électriques</div>
+                        <div class="stat-value">${stats.total_ebikes || 0}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Vélos mécaniques</div>
+                        <div class="stat-value">${stats.total_mechanical || 0}</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Places disponibles</div>
+                        <div class="stat-value">${stats.total_docks || 0}</div>
+                    </div>
+                `;
+
+                document.getElementById('updateTime').textContent = formatDate(new Date());
+            } catch (error) {
+                console.error('Erreur lors du chargement des stats:', error);
+            }
+        }
+
+        // Fonction pour charger les graphiques
+        async function loadCharts() {
+            try {
+                const response = await fetch('/api/charts');
+                const data = await response.json();
+                
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+
+                Plotly.newPlot('bikeDistributionChart', data.bike_distribution.data, data.bike_distribution.layout);
+                Plotly.newPlot('stationsByArrondissementChart', data.stations_by_arrondissement.data, data.stations_by_arrondissement.layout);
+                Plotly.newPlot('availabilityByArrondissementChart', data.availability_by_arrondissement.data, data.availability_by_arrondissement.layout);
+            } catch (error) {
+                console.error('Erreur lors du chargement des graphiques:', error);
+            }
+        }
+
+        // Fonction pour charger les stations
+        async function loadStations() {
+            try {
+                const response = await fetch('/api/stations');
+                const stations = await response.json();
+                
+                if (stations.error) {
+                    throw new Error(stations.error);
+                }
+
+                const tbody = document.getElementById('stationsTableBody');
+                tbody.innerHTML = '';
+                
+                const arrondissements = [...new Set(stations.map(s => s.arrondissement).filter(a => a))];
+                const arrondissementFilter = document.getElementById('arrondissementFilter');
+                
+                // Mise à jour du filtre des arrondissements
+                arrondissements.forEach(arr => {
+                    const option = document.createElement('option');
+                    option.value = arr;
+                    option.textContent = arr;
+                    arrondissementFilter.appendChild(option);
+                });
+
+                stations.forEach(station => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${station.name}</td>
+                        <td>${station.arrondissement || 'N/A'}</td>
+                        <td>${station.ebikes}</td>
+                        <td>${station.mechanical_bikes}</td>
+                        <td>${station.docks_available}</td>
+                        <td>${formatDate(station.timestamp)}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                // Gestion de la recherche et du filtrage
+                setupFiltering();
+            } catch (error) {
+                console.error('Erreur lors du chargement des stations:', error);
+            }
+        }
+
+        // Configuration du filtrage
+        function setupFiltering() {
+            const searchInput = document.getElementById('searchInput');
+            const arrondissementFilter = document.getElementById('arrondissementFilter');
+            const tableBody = document.getElementById('stationsTableBody');
+            const rows = tableBody.getElementsByTagName('tr');
+
+            function filterStations() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const selectedArrondissement = arrondissementFilter.value;
+
+                for (let row of rows) {
+                    const cells = row.getElementsByTagName('td');
+                    const stationName = cells[0].textContent.toLowerCase();
+                    const arrondissement = cells[1].textContent;
+
+                    const nameMatch = stationName.includes(searchTerm);
+                    const arrondissementMatch = !selectedArrondissement || arrondissement === selectedArrondissement;
+
+                    row.style.display = nameMatch && arrondissementMatch ? '' : 'none';
+                }
+            }
+
+            searchInput.addEventListener('input', filterStations);
+            arrondissementFilter.addEventListener('change', filterStations);
+        }
+
+        // Chargement initial
+        loadStats();
+        loadCharts();
+        loadStations();
+
+        // Actualisation automatique toutes les 2 minutes
+        setInterval(() => {
+            loadStats();
+            loadStations();
+        }, 120000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+streamlit
+pandas
+plotly
+sqlite-utils
+requests
+schedule

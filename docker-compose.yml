@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  dashboard:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dashboard
+    container_name: velib_dashboard
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./db/data:/app/db/data   # partage SQLite
+    depends_on:
+      - ingestion
+
+  ingestion:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.ingestion
+    container_name: velib_ingestion
+    volumes:
+      - ./db/data:/app/db/data
+    environment:
+      - VELIB_API=https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/velib-disponibilite-en-temps-reel/records?limit=100
+      - DB_PATH=/app/db/data/velib.db
+    restart: always
