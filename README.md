@@ -51,7 +51,7 @@ Ce projet s'inscrit dans le cadre d'un test technique pour un poste de Data Engi
 
 ### Extraction (E)
 **Source :** API OpenData Vélib - Ville de Paris
-- **Endpoint :** https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/velib-disponibilite-en-temps-reel/records
+- **Endpoint :** https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/velib-disponibilite-en-temps-reel/records?limit=100
 - **Fréquence :** Toutes les 5 minutes
 - **Format :** JSON avec pagination
 - **Données extraites :**
