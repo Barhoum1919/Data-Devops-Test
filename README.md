@@ -57,14 +57,20 @@ Ce projet s'inscrit dans le cadre d'un test technique pour un poste de Data Engi
 
 ---
 
-## 📥 Méthode 1 : Installation avec Docker (Recommandée)
-
 ### 1. Clonage du Repository
+```bash
 git clone https://github.com/Barhoum1919/Data-Devops-Test.git
 cd Data-Devops-Test
+```
 ### 2. Lancer L'application Containerisé
 # Construction et lancement des conteneurs
+```bash
 docker-compose up --build
+```
+### 3. Accès à l'Application
+# Dashboard Principal : http://localhost:8501/
+
+
 
 
 ## 📈 Processus ETL
