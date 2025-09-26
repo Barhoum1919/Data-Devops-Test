@@ -54,15 +54,8 @@ Ce projet vise à concevoir et déployer une plateforme de **surveillance en tem
 - **Docker Compose** : Orchestration multi-conteneurs
 - **Git** : Versioning du code
 
-
-+------------------+    +------------------+    +------------------+    +------------------+
-|    INGESTION     | -->|    PROCESSING    | -->|     STORAGE      | -->|  VISUALIZATION   |
-|                  |    |                  |    |                  |    |                  |
-| • fetch_velib_   |    | • transform_velib|    | • update_        |    | • load_data()    |
-|   data()         |    |   _data()        |    |   stations_data  |    | • Streamlit      |
-| • API call       |    | • Transformation |    | • update_        |    | • Dashboard      |
-| • Raw JSON       |    | • Enrichment     |    |   availability_  |    | • Charts         |
-+------------------+    +------------------+    +------------------+    +------------------+
+Workflow globale : 
+DATA INGESTION ────> DATA PROCESSING ────> DATA STORAGE ────> VISUALIZATION
 
 
 ## 🚀 Guide d'Installation Rapide
