@@ -16,6 +16,7 @@ Ce projet s'inscrit dans le cadre d'un test technique pour un poste de Data Engi
 ### Pourquoi les données Vélib ?
 
 Ce projet vise à concevoir et déployer une plateforme de **surveillance en temps réel** des stations Vélib parisiennes. L'objectif est de collecter, traiter et analyser les données de disponibilité pour fournir des **insights actionnables** via un dashboard interactif.
+
 **Critères de sélection :**
 - **Données temps réel** : API disponible avec mise à jour fréquente
 - **Utilité publique** : Service de mobilité urbaine impactant
