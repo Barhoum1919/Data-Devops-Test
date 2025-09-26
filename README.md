@@ -55,14 +55,14 @@ Ce projet vise à concevoir et déployer une plateforme de **surveillance en tem
 - **Git** : Versioning du code
 
 
-┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐
-│    INGESTION     │───▶│    PROCESSING    │───▶│     STORAGE      │───▶│  VISUALIZATION   │
-│                  │    │                  │    │                  │    │                  │
-│ • fetch_velib_   │    │ • transform_velib│    │ • update_        │    │ • load_data()    │
-│   data()         │    │   _data()        │    │   stations_data  │    │ • Streamlit      │
-│ • API call       │    │ • Transformation │    │ • update_        │    │ • Dashboard      │
-│ • Raw JSON       │    │ • Enrichment     │    │   availability_  │    │ • Charts         │
-└──────────────────┘    └──────────────────┘    └──────────────────┘    └──────────────────┘
++------------------+    +------------------+    +------------------+    +------------------+
+|    INGESTION     | -->|    PROCESSING    | -->|     STORAGE      | -->|  VISUALIZATION   |
+|                  |    |                  |    |                  |    |                  |
+| • fetch_velib_   |    | • transform_velib|    | • update_        |    | • load_data()    |
+|   data()         |    |   _data()        |    |   stations_data  |    | • Streamlit      |
+| • API call       |    | • Transformation |    | • update_        |    | • Dashboard      |
+| • Raw JSON       |    | • Enrichment     |    |   availability_  |    | • Charts         |
++------------------+    +------------------+    +------------------+    +------------------+
 
 
 ## 🚀 Guide d'Installation Rapide
