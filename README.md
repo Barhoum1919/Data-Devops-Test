@@ -55,8 +55,8 @@ Ce projet vise à concevoir et déployer une plateforme de **surveillance en tem
 - **Git** : Versioning du code
 
 
-  DATA                     DATA                   DATA                  VISUALIZATION  
-  INGESTION     ────>│   PROCESSING     ────>│   STORAGE       ────>│   & DASHBOARD   │
+                                         
+  DATA INGESTION  ────>│  DATA PROCESSING     ────>│  DATA STORAGE ────>│ VISUALIZATION & DASHBOARD   │
 
 
 ## 🚀 Guide d'Installation Rapide
