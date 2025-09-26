@@ -57,10 +57,6 @@ Ce projet vise à concevoir et déployer une plateforme de **surveillance en tem
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   DATA          │    │   DATA           │    │   DATA          │    │   VISUALIZATION │
 │   INGESTION     │────│   PROCESSING     │────│   STORAGE       │────│   & DASHBOARD   │
-│                 │    │                  │    │                 │    │                 │
-│ • fetch_velib   │    │ • transform      │    │ • SQLite        │    │ • Streamlit     │
-│ • API calls     │    │ • validation     │    │ • init_db       │    │ • Plotly        │
-│ • scheduling    │    │ • enrichment     │    │ • transactions  │    │ • KPI metrics   │
 └─────────────────┘    └──────────────────┘    └─────────────────┘    └─────────────────┘
 
 
