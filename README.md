@@ -28,7 +28,7 @@ Ce projet vise à concevoir et déployer une plateforme de **surveillance en tem
 3. **Mix énergétique** : Ratio vélos électriques/mécaniques
 4. **Performance opérationnelle** : Taux d'occupation et optimisation
 
- **Valeur Ajoutée**
+ **Valeur Ajoutée :**
 - 📡 **Collecte temps réel** des données via API OpenData
 - 🗄️ **Stockage optimisé** dans une base SQLite
 - 📊 **Visualisation intuitive** avec Streamlit
